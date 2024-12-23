@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>留言板</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f9f9f9;
+            margin: 0;
+            padding: 0;
+        }
+        textarea {
+            width: 80%;
+            height: 100px;
+            margin: 10px 0;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        .messages {
+            margin: 20px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            background: #fff;
+            text-align: left;
+            max-height: 400px;
+            overflow-y: scroll;
+        }
+    </style>
+</head>
+<body>
+    <h1>写下你想对大家说的话</h1>
+    <textarea id="messageInput" placeholder="写下你的留言..."></textarea>
+    <br>
+    <button onclick="addMessage()">提交留言</button>
+    <div id="messageBoard" class="messages">
+        <h3>留言：</h3>
+    </div>
+    <script>
+        function addMessage() {
+            const message = document.getElementById('messageInput').value;
+            if (message.trim()) {
+                const messageBoard = document.getElementById('messageBoard');
+                const newMessage = document.createElement('p');
+                newMessage.textContent = message;
+                messageBoard.appendChild(newMessage);
+                document.getElementById('messageInput').value = '';
+            } else {
+                alert('请输入内容！');
+            }
+        }
+    </script>
+</body>
+</html>
+
